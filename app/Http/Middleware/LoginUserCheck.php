@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 
 class LoginUserCheck
@@ -19,7 +20,7 @@ class LoginUserCheck
         $loginId = Auth::id();
         $requestId = $request->id;
         if ($loginId != $requestId) {
-            return redirect(route('login'));
+            return redirect('/login');
          }
 
         return $next($request);

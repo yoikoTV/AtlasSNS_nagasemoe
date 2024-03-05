@@ -41,13 +41,13 @@ class RegisterController extends Controller
 
     public function register(Request $request){
 
-        $validated = $request->validate([
+        if($request->isMethod('post')){
+
+            $validated = $request->validate([
             'username' => 'required|min:2|max:12',
             'mail' => 'required|min:5|max:40',
             'password' => 'required|min:8|max:20|alpha-num|confirmed'
-        ]);
-
-        if($request->isMethod('post')){
+            ]);
 
             $username = $request->input('username');
             $mail = $request->input('mail');
@@ -65,7 +65,6 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        $username = $request->input('username');
-        return view('auth.added',['username'=>$username]);
+        return view('auth.added');
     }
 }
