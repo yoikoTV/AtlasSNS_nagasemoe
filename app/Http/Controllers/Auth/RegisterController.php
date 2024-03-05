@@ -65,6 +65,7 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        return view('auth.added');
+        $username = $request->input('username');
+        return view('auth.added',['username'=>$username]);
     }
 }
