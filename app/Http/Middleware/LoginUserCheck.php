@@ -17,12 +17,10 @@ class LoginUserCheck
      */
     public function handle($request, Closure $next)
     {
-        $loginId = Auth::id();
-        $requestId = $request->id;
-        if ($loginId != $requestId) {
+        if (Auth::check()) {
+            return $next($request);
+        } else {
             return redirect('/login');
-         }
-
-        return $next($request);
+        }
     }
 }
