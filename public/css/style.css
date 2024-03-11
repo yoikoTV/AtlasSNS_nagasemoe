@@ -1,22 +1,99 @@
 @charset "utf-8";
-html{
-}
-body{
-}
+
+html {}
+
+body {}
+
 /* header */
-header{
-    background:#186AC9;
+header {
+    background: #186AC9;
+}
+
+#header-menu-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+
+.menu-space {
+    padding-right: 10px;
+}
+
+#header-menu-wrapper h1 {
+    margin-right: auto;
+}
+
+#header-menu-wrapper p img {
+    padding-left: 10px;
+}
+
+/* アコーディオンメニュー */
+.menu-btn {
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+}
+
+.inn {
+    display: inline-block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: rotate(135deg);
+    border-top: 1px solid #FFF;
+    border-right: 1px solid #FFF;
+    transition: 0.3s ease;
+}
+
+.menu-btn.is-open {
+    .inn {
+        &:before {
+            top: 30%;
+            transform: translate(-50%, -60%) rotate(-45deg);
+        }
+    }
+}
+
+.menu {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease-in-out;
+    pointer-events: none;
+    transform: translateY(-30px);
+
+    ul {
+        border-bottom: 1px solid #000;
+
+        li {
+            height: 60px;
+            border-top: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* main content */
-#row{
+#row {
     display: flex;
     flex-flow: row wrap;
 }
-#container{
+
+#container {
     flex: 0 0 80%;
 }
-#side-bar{
+
+#side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }

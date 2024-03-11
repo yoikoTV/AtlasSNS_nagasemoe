@@ -22,16 +22,22 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+            <div id="header-menu-wrapper">
+                <h1><a href="/top"><img src="/public/images/atlas.png"></a></h1>
+
+                <p class ="menu-space">{{ session("username") }}さん<img src="images/arrow.png"></p>
+
+                <button type="button" class="menu-btn menu-space">
+                    <span class="inn"></span>
+                </button>
+
+                 <nav class="menu">
+                    <ul>
+                         <li><a href="/top">ホーム</a></li>
+                         <li><a href="/profile">プロフィール</a></li>
+                        <li><a href="/logout">ログアウト</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
@@ -58,7 +64,7 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="/public/js/index.js"></script>
     <script src="JavaScriptファイルのURL"></script>
 </body>
 </html>
