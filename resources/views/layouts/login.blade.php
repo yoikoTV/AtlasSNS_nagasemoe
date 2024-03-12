@@ -23,9 +23,9 @@
     <header>
         <div id = "head">
             <div id="header-menu-wrapper">
-                <h1><a href="/top"><img src="/public/images/atlas.png"></a></h1>
+                <h1><a href="/top"><img class="logo" src="{{asset('images/atlas.png')}}"></a></h1>
 
-                <p class ="menu-space">{{ session("username") }}さん<img src="images/arrow.png"></p>
+                <p class ="menu-space">{{ session("username") }}さん<img src="{{asset('images/icon1.png')}}"></p>
 
                 <button type="button" class="menu-btn menu-space">
                     <span class="inn"></span>
@@ -64,7 +64,7 @@
     </div>
     <footer>
     </footer>
-    <script src="/public/js/index.js"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
 </body>
 </html>
