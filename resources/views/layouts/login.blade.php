@@ -25,7 +25,7 @@
             <div id="header-menu-wrapper">
                 <h1><a href="/top"><img class="logo" src="{{asset('images/atlas.png')}}"></a></h1>
 
-                <p class ="menu-space">{{ session("username") }}さん<img src="{{asset('images/icon1.png')}}"></p>
+                <p class ="menu-space">{{ $user->username }}さん<img src="{{asset('images/icon1.png')}}"></p>
 
                 <button type="button" class="menu-btn menu-space">
                     <span class="inn"></span>
@@ -47,7 +47,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p>{{ $user->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>
