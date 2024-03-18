@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -50,11 +50,6 @@ class LoginController extends Controller
             }
         }
         return view("auth.login");
-    }
-
-    public function loginname(Request $request){
-        $user = Auth::user();
-		return view('loginname', compact('user'));
     }
 
     public function logout(Request $request){

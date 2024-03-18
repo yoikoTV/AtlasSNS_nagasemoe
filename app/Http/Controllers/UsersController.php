@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class UsersController extends Controller
 {
     //
     public function profile(){
-        return view('users.profile');
+        $user = Auth::user();
+        return view('users.profile', compact('user'));
     }
     public function search(){
         return view('users.search');
