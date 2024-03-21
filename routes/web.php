@@ -19,7 +19,6 @@
 //Auth::routes();
 
 use App\Http\Middleware\LoginUserCheck;
-use App\Http\Controllers\PostsController;
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
@@ -37,7 +36,7 @@ Route::group(['middleware' => ['loginUserCheck']], function() {
 Route::get('/top','PostsController@index');
 Route::post('/top','PostsController@index');
 
-Route::resource('posts',PostsController::class);
+Route::resource('top',PostsController::class);
 
 Route::get('/profile','UsersController@profile');
 

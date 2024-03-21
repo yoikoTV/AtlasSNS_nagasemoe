@@ -4,31 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Post;
 
 class PostsController extends Controller
 {
     //
     public function index(){
         $user = Auth::user();
-        $posts = Posts::all();
+        $posts = Post::all();
         return view('posts.index', compact('user','posts'));
     }
 
     public function create(){
-        return view('post.create');
+        $user = Auth::user();
+        $posts = Post::all();
+        return view('posts.create', compact('user','posts'));
     }
 
     public function store(Request $request){
-        $posts = new Posts;
+        $posts = new Post;
         $posts->post = $request->post;
         //データベースに保存
-        $post->save();
+        $posts->save();
         return redirect('/top');
     }
 
     public function edit($id){
-        $posts = Posts::find($id);
-        return view('post.edit',compact('posts'));
+        $posts = Post::find($id);
+        return view('posts.edit',compact('posts'));
     }
 
     public function update(Request $request, $id) {
@@ -38,7 +41,7 @@ class PostsController extends Controller
     }
 
     public function destroy($id){
-        $posts = Posts::find($id);
+        $posts = Post::find($id);
         $items->delete();
         return redirect('/top');
     }
