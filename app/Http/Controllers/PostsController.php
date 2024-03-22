@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Post;
+use App\Post; //Postモデル（Postsテーブル）を使うuse宣言
+use App\User;
 
 class PostsController extends Controller
 {
@@ -18,14 +19,14 @@ class PostsController extends Controller
     public function create(){
         $user = Auth::user();
         $posts = Post::all();
-        return view('posts.create', compact('user','posts'));
+        return view('posts.index', compact('user','posts'));
     }
 
     public function store(Request $request){
+        //user_idを指定？するような記述
         $posts = new Post;
-        $posts->post = $request->post;
-        //データベースに保存
-        $posts->save();
+        $posts = $request->input('post');
+        Post::create(['post' => $posts]);
         return redirect('/top');
     }
 
