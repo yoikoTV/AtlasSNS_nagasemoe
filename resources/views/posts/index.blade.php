@@ -22,6 +22,15 @@
   </div>
 </div>
 
+<!-- <div class="read">
+  @foreach ($posts as $post)
+  <tr>
+    <td>{{ $post-> プロフィール画像 }}</td>
+    <td>{{ $post-> usernameって書きたいけどpostモデルにusernameは無いから何を指定する...?? }} </td>
+     <td>{{ $post->post }}</td>
+  </tr>
+  @endforeach
+</div> -->
 
 
 @endsection
