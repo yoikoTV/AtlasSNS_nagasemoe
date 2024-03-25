@@ -9,7 +9,6 @@ use App\User;
 
 class PostsController extends Controller
 {
-    //
     public function index(){
         $user = Auth::user();
         $posts = Post::all();
@@ -23,10 +22,12 @@ class PostsController extends Controller
     }
 
     public function store(Request $request){
-        //user_idを指定？するような記述
-        $posts = new Post;
+        $user_id = Auth::user()->id;
         $posts = $request->input('post');
-        Post::create(['post' => $posts]);
+        Post::create(
+            ['post' => $posts],
+            ['user_id' => $user_id]
+        );
         return redirect('/top');
     }
 
@@ -43,7 +44,7 @@ class PostsController extends Controller
 
     public function destroy($id){
         $posts = Post::find($id);
-        $items->delete();
+        $posts->delete();
         return redirect('/top');
     }
 }

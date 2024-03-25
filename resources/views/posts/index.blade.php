@@ -8,29 +8,17 @@
 <div class="create">
   <div class="form">
     <img class="post_icon" src="{{asset('images/icon1.png')}}">
-
+    <div class="form-group">
       {!! Form::open(['url' => '/top']) !!}
+      {{ Form::input('text', 'post', null, ['required', 'class' => 'posts', 'placeholder' => '投稿内容を入力してください']) }}
 
-        <div class="form-group">
-          {{ Form::input('text', 'post', null, ['required', 'class' => 'posts', 'placeholder' => '投稿内容を入力してください']) }}
-        </div>
+    <button type="submit"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
 
-        <button type="submit"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
-
-        {!! Form::close() !!}
+    {!! Form::close() !!}
+  </div>
 
   </div>
 </div>
-
-<!-- <div class="read">
-  @foreach ($posts as $post)
-  <tr>
-    <td>{{ $post-> プロフィール画像 }}</td>
-    <td>{{ $post-> usernameって書きたいけどpostモデルにusernameは無いから何を指定する...?? }} </td>
-     <td>{{ $post->post }}</td>
-  </tr>
-  @endforeach
-</div> -->
 
 
 @endsection

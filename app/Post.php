@@ -8,9 +8,9 @@ class Post extends Model
 {
     public $guarded = ['id', 'created_at'];
 
-    protected $fillable = ['posts'];
+    protected $fillable = ['posts', 'user_id'];
 
-    public function posts(){
+    public function users(){
         return $this->belongsTo('App\User');
     }
     //Postは１人のUserしか登録できない。（「１」側）
