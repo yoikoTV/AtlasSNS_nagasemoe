@@ -8,7 +8,7 @@ class Post extends Model
 {
     public $guarded = ['id', 'created_at'];
 
-    protected $fillable = ['posts', 'user_id'];
+    protected $fillable = ['post', 'user_id'];
 
     public function users(){
         return $this->belongsTo('App\User');

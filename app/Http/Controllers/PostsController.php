@@ -9,42 +9,57 @@ use App\User;
 
 class PostsController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $user = Auth::user();
-        $posts = Post::all();
-        return view('posts.index', compact('user','posts'));
+        $posts = Post::get();
+        $TL_users = User::get();
+        return view('posts.index', compact('user','posts','TL_users'));
     }
 
-    public function create(){
+    public function create()
+    {
         $user = Auth::user();
-        $posts = Post::all();
-        return view('posts.index', compact('user','posts'));
+        $posts = Post::get();
+        $TL_users = User::all();
+        return view('posts.index', compact('user','posts','TL_users'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $user_id = Auth::user()->id;
+        //dd($user_id);
         $posts = $request->input('post');
-        Post::create(
-            ['post' => $posts],
-            ['user_id' => $user_id]
-        );
+        //dd($posts);
+        $request -> validate([
+            'post' => 'required|max:150'
+        ]);
+        Post::create([
+            'post' => $posts,
+            'user_id' => $user_id,
+        ]);
         return redirect('/top');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
+        $user_id = Auth::user()->id;
         $posts = Post::find($id);
-        return view('posts.edit',compact('posts'));
+        return view('/top');
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $posts = Post::find($id);
         $posts->post = $request->post;
         return redirect('/top');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $posts = Post::find($id);
         $posts->delete();
         return redirect('/top');
     }
+
 }
