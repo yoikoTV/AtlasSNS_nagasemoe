@@ -35,8 +35,8 @@
 <div class = "read">
   <div>
   @foreach
-    {{ $user->images }}
-    {{ $user->username }}
+    {{ $TL_users->images }}
+    {{ $TL_users>username }}
     {{ $TL_users->post }}
     {{ $TL_users->updated_at }}
   @endforeach
