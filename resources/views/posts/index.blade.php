@@ -37,8 +37,8 @@
   @foreach
     {{ $TL_users->images }}
     {{ $TL_users>username }}
-    {{ $TL_users->post }}
-    {{ $TL_users->updated_at }}
+    {{ $posts->post }}
+    {{ $posts->updated_at }}
   @endforeach
   </div>
 </div>

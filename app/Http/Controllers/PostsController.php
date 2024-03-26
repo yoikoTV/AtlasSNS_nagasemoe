@@ -21,7 +21,7 @@ class PostsController extends Controller
     {
         $user = Auth::user();
         $posts = Post::get();
-        $TL_users = User::all();
+        $TL_users = User::get();
         return view('posts.index', compact('user','posts','TL_users'));
     }
 
