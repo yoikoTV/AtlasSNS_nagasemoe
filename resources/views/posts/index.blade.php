@@ -34,11 +34,8 @@
 
 <div class = "read">
   <div>
-  @foreach
-    {{ $TL_users->images }}
-    {{ $TL_users>username }}
-    {{ $posts->post }}
-    {{ $posts->updated_at }}
+  @foreach ($TL_users as $TL_user)
+
   @endforeach
   </div>
 </div>
