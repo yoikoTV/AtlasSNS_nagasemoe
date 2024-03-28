@@ -34,8 +34,12 @@
 
 <div class = "read">
   <div>
-  @foreach ($TL_users as $TL_user)
-
+  <!-- $TL_usersも記foreachの中に記載したいけどどう追記すれば良いかわからない（それとも必要なし？）-->
+  @foreach ($posts as $post)
+  <img src=" {{$post->users->images}} " alt="icon">
+  <p>{{$post->users->username}}</p>
+  <p>{{$post->post}}</p>
+  <p>{{$post->updated_at}}</p>
   @endforeach
   </div>
 </div>

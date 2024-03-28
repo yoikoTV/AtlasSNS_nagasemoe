@@ -13,8 +13,8 @@ class PostsController extends Controller
     {
         $user = Auth::user();
         $posts = Post::get();
-        $TL_users = User::get();
-        dd($TL_users);
+        $TL_users = Post::with('post.users')->get();
+        //dd($TL_users);
         return view('posts.index', compact('user','posts','TL_users'));
     }
 
@@ -22,7 +22,7 @@ class PostsController extends Controller
     {
         $user = Auth::user();
         $posts = Post::get();
-        $TL_users = User::get();
+        $TL_users = Post::with('post.user')->get();
         return view('posts.index', compact('user','posts','TL_users'));
     }
 
