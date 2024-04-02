@@ -6,7 +6,7 @@
 
 <!-- 新規投稿フォーム -->
 <div class="create">
-  <div class="create_form">
+  <div class="content">
 
     <img class="post_icon" src="{{asset('images/icon1.png')}}">
 
@@ -61,9 +61,13 @@
       <a class="js-modal-close" href="">閉じる</a>
     </div>
   </div>
-
 </div>
 
+<div class="delete">
+  <div class="content">
+    <a class="" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="{{ asset('/js/script.js') }}"></script>
 @endsection

@@ -48,22 +48,20 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
-        Post::with('user')->get();
         $posts = $request->input('post');
         //dd($posts);
         $request -> validate([
             'post' => 'required|max:150'
         ]);
-        Post::create([
-            'post' => $posts,
-            'user_id' => $user_id,
+        Post::where('id', $id)->update([
+              'title' => $up_title,
+              'price' => $up_price
         ]);
     }
 
-    public function destroy()
+    public function delete($id)
     {
-        Post::with('user')->get();
-        $posts->delete();
+        Post::where('id', $id)->delete();
         return redirect('/top');
     }
 
