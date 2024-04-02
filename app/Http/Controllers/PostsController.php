@@ -12,18 +12,15 @@ class PostsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $posts = Post::get();
-        $TL_users = Post::with('post.users')->get();
-        //dd($TL_users);
-        return view('posts.index', compact('user','posts','TL_users'));
+        $posts = Post::with('user')->get();
+        return view('posts.index', compact('user','posts'));
     }
 
     public function create()
     {
         $user = Auth::user();
-        $posts = Post::get();
-        $TL_users = Post::with('post.user')->get();
-        return view('posts.index', compact('user','posts','TL_users'));
+        $posts = Post::with('user')->get();
+        return view('posts.index', compact('user','posts'));
     }
 
     public function store(Request $request)

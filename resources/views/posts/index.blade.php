@@ -32,17 +32,38 @@
 
 </div>
 
-<div class = "read">
-  <div>
-  <!-- $TL_usersも記foreachの中に記載したいけどどう追記すれば良いかわからない（それとも必要なし？）-->
+<div class="read">
+  <div class="content">
   @foreach ($posts as $post)
-  <img src=" {{$post->users->images}} " alt="icon">
-  <p>{{$post->users->username}}</p>
-  <p>{{$post->post}}</p>
-  <p>{{$post->updated_at}}</p>
+    <img src="{{$post->user->images}}" alt="icon">
+    <p>{{$post->user->username}}</p>
+    <p>{{$post->post}}</p>
+    <p>{{$post->updated_at}}</p>
   @endforeach
   </div>
 </div>
 
+<div class = "update">
+  @foreach ($posts as $post)
+    <div class="content">
+      <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">編集</a>
+    </div>
+  @endforeach
+  <div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+      <form action="" method="">
+        <textarea name="" class="modal_post"></textarea>
+        <input type="hidden" name="" class="modal_id" value="">
+        <input type="submit" value="更新">
+        {{ csrf_field() }}
+      </form>
+      <a class="js-modal-close" href="">閉じる</a>
+    </div>
+  </div>
 
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="{{ asset('/js/script.js') }}"></script>
 @endsection
