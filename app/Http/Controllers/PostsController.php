@@ -39,23 +39,30 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
-    public function edit($id)
+    public function edit()
     {
         $user_id = Auth::user()->id;
-        $posts = Post::find($id);
+        $posts = Post::with('user')->get();
         return view('/top');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $posts = Post::find($id);
-        $posts->post = $request->post;
-        return redirect('/top');
+        Post::with('user')->get();
+        $posts = $request->input('post');
+        //dd($posts);
+        $request -> validate([
+            'post' => 'required|max:150'
+        ]);
+        Post::create([
+            'post' => $posts,
+            'user_id' => $user_id,
+        ]);
     }
 
-    public function destroy($id)
+    public function destroy()
     {
-        $posts = Post::find($id);
+        Post::with('user')->get();
         $posts->delete();
         return redirect('/top');
     }
