@@ -3,7 +3,7 @@ $(function () {
   $('.js-modal-open').on('click', function () {
 
     // モーダルの中身をフェードインして表示する
-    $('js-modal').fadeIn();
+    $('.js-modal').fadeIn();
 
     // 押されたボタン（編集ボタン）から投稿内容を取得・変数へ格納
     // thisはjs-modal-openのこと

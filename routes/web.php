@@ -38,6 +38,8 @@ Route::post('/top','PostsController@index');
 
 Route::resource('top',PostsController::class);
 
+Route::get('/post/{id}/delete','PostsController@delete');
+
 Route::get('/profile','UsersController@profile');
 
 Route::get('/search','UsersController@index');

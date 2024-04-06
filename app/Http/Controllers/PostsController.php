@@ -48,15 +48,15 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
-        $posts = $request->input('post');
-        //dd($posts);
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
         $request -> validate([
-            'post' => 'required|max:150'
+            'upPost' => 'required|max:150'
         ]);
         Post::where('id', $id)->update([
-              'title' => $up_title,
-              'price' => $up_price
+              'upPost' => $up_post,
         ]);
+        return redirect('/top');
     }
 
     public function delete($id)
