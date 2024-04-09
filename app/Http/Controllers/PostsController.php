@@ -46,15 +46,15 @@ class PostsController extends Controller
         return view('/top');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $id = $request->input('id');
-        $up_post = $request->input('upPost');
+        $id = Auth::user()->id;
+        $up_post = $request->input('post');
         $request -> validate([
-            'upPost' => 'required|max:150'
+            'post' => 'required|max:150'
         ]);
         Post::where('id', $id)->update([
-              'upPost' => $up_post,
+               'post' => $up_post
         ]);
         return redirect('/top');
     }

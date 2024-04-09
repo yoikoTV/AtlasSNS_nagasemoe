@@ -52,10 +52,10 @@
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <form action="" method="">
+      <form action="" method="post">
         <textarea name="" class="modal_post"></textarea>
         <input type="hidden" name="" class="modal_id" value="">
-        <input type="submit" value="更新">
+        <input type="submit" onclick="location.href='/post/{id}/update'" value="更新">
         {{ csrf_field() }}
       </form>
       <a class="js-modal-close" href="">閉じる</a>
@@ -65,9 +65,10 @@
 
 <div class="delete">
   <div class="content">
-    <a class="" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+    <a class="" href="/post/{id}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="{{ asset('/js/script.js') }}"></script>
 @endsection
