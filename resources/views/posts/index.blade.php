@@ -6,8 +6,8 @@
 
 <!-- 新規投稿フォーム -->
 <div class="create">
-  <div class="content">
 
+  <div class="content">
     <img class="post_icon" src="{{asset('images/icon1.png')}}">
 
     <div class="form-group">
@@ -32,40 +32,40 @@
 
 </div>
 
-<div class="read">
-  <div class="content">
+
+<div class="content">
   @foreach ($posts as $post)
-    <img src="{{$post->user->images}}" alt="icon">
-    <p>{{$post->user->username}}</p>
-    <p>{{$post->post}}</p>
-    <p>{{$post->updated_at}}</p>
+    <div class="read">
+      <img src="{{$post->user->images}}" alt="icon">
+      <p>{{$post->user->username}}</p>
+      <p>{{$post->post}}</p>
+      <p>{{$post->updated_at}}</p>
+    </div>
+
+    @if ($post->user_id == Auth::id())
+      <div class = "update">
+          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">編集</a>
+      </div>
+
+      <div class="delete">
+        <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+      </div>
+    @endif
   @endforeach
-  </div>
 </div>
 
 <div class = "update">
-  @foreach ($posts as $post)
-    <div class="content">
-      <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">編集</a>
-    </div>
-  @endforeach
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <form action="" method="post">
-        <textarea name="" class="modal_post"></textarea>
-        <input type="hidden" name="" class="modal_id" value="">
-        <input type="submit" onclick="location.href='/post/{id}/update'" value="更新">
+      <form action="/post/update" method="post">
+        <textarea name="up_post" class="modal_post"></textarea>
+        <input type="hidden" name="up_post_id" class="modal_id" value="">
+        <input type="submit" value="更新">
         {{ csrf_field() }}
       </form>
       <a class="js-modal-close" href="">閉じる</a>
     </div>
-  </div>
-</div>
-
-<div class="delete">
-  <div class="content">
-    <a class="" href="/post/{id}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
   </div>
 </div>
 

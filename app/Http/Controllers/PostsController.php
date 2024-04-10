@@ -46,13 +46,15 @@ class PostsController extends Controller
         return view('/top');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $id = Auth::user()->id;
-        $up_post = $request->input('post');
         $request -> validate([
-            'post' => 'required|max:150'
+            'up_post' => 'required|max:150'
+            //name属性のこと
         ]);
+        $id = $request->input('up_post_id');
+        $up_post = $request->input('up_post'); //name属性のこと
+        //dd($up_post);
         Post::where('id', $id)->update([
                'post' => $up_post
         ]);
@@ -64,5 +66,4 @@ class PostsController extends Controller
         Post::where('id', $id)->delete();
         return redirect('/top');
     }
-
 }
