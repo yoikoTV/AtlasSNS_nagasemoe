@@ -28,6 +28,6 @@ class UsersController extends Controller
         }else{
             $search_users = User::all();
         }
-        return view('/top',['username'=>$search_users]);
+        return view('/search',compact('search_users'),['username'=>$search_users],);
     }
 }

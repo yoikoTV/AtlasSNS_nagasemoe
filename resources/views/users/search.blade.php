@@ -10,5 +10,14 @@
   </form>
 </div>
 
+<div class="content">
+  <tr>
+    @foreach($search_users as $search_user)
+    <p>{{$search_user->images}}</p>
+    <p>{{$search_user->username}}</p>
+    @endforeach
+  </tr>
+</div>
+
 
 @endsection
