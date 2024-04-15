@@ -11,7 +11,7 @@ class UsersController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('users.search');
+        return view('users.search', compact('user'));
     }
 
     public function profile()
@@ -20,8 +20,14 @@ class UsersController extends Controller
         return view('users.profile', compact('user'));
     }
 
-    public function search()
+    public function search(Request $request)
     {
-        return view('users.search');
+        $keyword = $request->input('keyword');
+        if(!empty($keyword)){
+            $search_users = User::where('username','like','%'.$keyword.'%')->get();
+        }else{
+            $search_users = User::all();
+        }
+        return view('/top',['username'=>$search_users]);
     }
 }
