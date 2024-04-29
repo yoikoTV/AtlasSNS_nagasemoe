@@ -31,4 +31,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
     //Userは複数のPostができる（「多」側）
+
+    public function follows(){
+        return $this->belongsToMany('App\User');
+    }
+    //フォローのリレーション（多対多は１対多のbelongsToManyメソッドを使う
 }

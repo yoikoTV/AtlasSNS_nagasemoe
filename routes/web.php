@@ -30,6 +30,7 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
+
 //ログイン中のページ
 Route::group(['middleware' => ['loginUserCheck']], function () {
 
@@ -38,12 +39,19 @@ Route::group(['middleware' => ['loginUserCheck']], function () {
 
   Route::resource('top', PostsController::class);
 
+
   Route::get('/post/{id}/delete', 'PostsController@delete');
   Route::post('/post/update', 'PostsController@update');
 
+
   Route::get('/profile', 'UsersController@profile');
 
+
   Route::get('/search', 'UsersController@index');
+  Route::post('/search', 'UsersController@index');
+
+  Route::get('/search_user', 'UsersController@search');
+
 
   Route::get('/follow-list', 'FollowsController@followList');
   Route::get('/follower-list', 'FollowsController@followerList');
