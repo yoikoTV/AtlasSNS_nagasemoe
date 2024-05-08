@@ -21,6 +21,9 @@
       @else
         {!! Form::open(['url' => '/search']) !!}
         {{ Form::input('hidden', 'following_id', null, ['placeholder' => 'フォローする'])}}
+         {!! Form::close() !!}
+      @endif
+
     @endforeach
   </tr>
 </div>
