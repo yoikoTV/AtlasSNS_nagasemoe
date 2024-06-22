@@ -17,17 +17,14 @@ class FollowsController extends Controller
         return view('follows.followerList', compact('user'));
     }
 
-    public function follow(Request $request)
+   public function follow(Request $request)
     {
-        $following_id = Auth::user()->id;
-        $followed_id = $request->input('followed_id');
+        $follow = new Follow();
+        $follow->following_id = Auth::id(); // 現在ログインしているユーザーのID
+        $follow->followed_id = $request->input('followed_id'); // フォロー対象のユーザーのID
+        $follow->save();
 
-        Follow::create([
-            'following_id' => $following_id,
-            'followed_id' => $followed_id,
-        ]);
-
-        return redirect('/search');
+        return back()->with('success', 'ユーザーをフォローしました。');
     }
 
     public function unfollow($id)
