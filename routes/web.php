@@ -52,14 +52,14 @@ Route::group(['middleware' => ['loginUserCheck']], function () {
 
   Route::get('/search_user', 'UsersController@search');
 
-
   Route::get('/follow-list', 'FollowsController@followList');
   Route::get('/follower-list', 'FollowsController@followerList');
+
   Route::get('/follow', 'FollowsController@followerList');
   Route::get('/unfollow', 'FollowsController@followerList');
 
-  Route::post('/follow', [FollowsController::class, 'follow'])->name('follow'); // フォローする
-  Route::post('/unfollow', [FollowsController::class, 'unfollow'])->name('unfollow'); // フォロー解除
+  Route::post('/follow', 'FollowsController@follow')->name('follow'); // フォローする
+  Route::post('/unfollow', 'FollowsController@unfollow')->name('unfollow'); // フォロー解除
 
   Route::get('/logout', 'Auth\LoginController@logout');
 });

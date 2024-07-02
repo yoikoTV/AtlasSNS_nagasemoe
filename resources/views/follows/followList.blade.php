@@ -1,5 +1,9 @@
 @extends('layouts.login')
 
 @section('content')
-フォローリストぺージです
+フォローリスト
+@foreach($following_user as $following_users)
+  <img src="{{ $following_users->images }}" alt="icon">
+@endforeach
+
 @endsection
