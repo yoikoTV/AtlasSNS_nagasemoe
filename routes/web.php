@@ -42,7 +42,10 @@ Route::group(['middleware' => ['loginUserCheck']], function () {
   Route::get('/post/{id}/delete', 'PostsController@delete');
   Route::post('/post/update', 'PostsController@update');
 
-  Route::get('/profile', 'UsersController@profile');
+  Route::get('/myprofile', 'UsersController@profileEdit');
+  Route::post('/myprofile', 'UsersController@profileUpdate');
+
+  Route::get('/profile/{id}', 'UsersController@profile');
 
   Route::get('/search', 'UsersController@index');
   Route::post('/search', 'UsersController@index');
@@ -58,7 +61,6 @@ Route::group(['middleware' => ['loginUserCheck']], function () {
   Route::post('/follow', 'FollowsController@follow')->name('follow'); // フォローする
   Route::post('/unfollow', 'FollowsController@unfollow')->name('unfollow'); // フォロー解除
 
-  Route::get('/follow-list', 'FollowsController@posts');
 
   Route::get('/logout', 'Auth\LoginController@logout');
 });

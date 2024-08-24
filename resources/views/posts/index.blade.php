@@ -1,9 +1,6 @@
 @extends('layouts.login')
 
 @section('content')
-
-<h2>機能を実装していきましょう。</h2>
-
 <!-- 新規投稿フォーム -->
 <div class="create">
 
@@ -36,7 +33,7 @@
 <div class="content">
   @foreach ($posts as $post)
     <div class="read">
-      <img src="{{$post->user->images}}" alt="icon">
+      <img src="{{ asset('images/' .$post->user->images) }}" alt="icon">
       <p>{{$post->user->username}}</p>
       <p>{{$post->post}}</p>
       <p>{{$post->updated_at}}</p>
@@ -58,12 +55,14 @@
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
+
       <form action="/post/update" method="post">
         <textarea name="up_post" class="modal_post"></textarea>
         <input type="hidden" name="up_post_id" class="modal_id" value="">
         <input type="submit" value="更新">
         {{ csrf_field() }}
       </form>
+
       <a class="js-modal-close" href="">閉じる</a>
     </div>
   </div>

@@ -3,16 +3,12 @@
 @section('content')
 フォローリスト
 @foreach($following_user as $following_users)
-  <img src="{{ $following_users->images }}" alt="icon">
+  <a href="/profile/{{$following_users->id}}"><img src="{{ asset('images/' .$following_users->images) }}" alt="icon"></a>
 @endforeach
-
 @foreach($posts as $post)
-  <div class="read">
-      <img src="{{$post->user->images}}" alt="icon">
-      <p>{{$post->user->username}}</p>
-      <p>{{$post->post}}</p>
-      <p>{{$post->updated_at}}</p>
-  </div>
+  <p>{{$post->user->username}}</p>
+  <p>{{$post->post}}</p>
+  <p>{{$post->updated_at}}</p>
 @endforeach
 
 @endsection
