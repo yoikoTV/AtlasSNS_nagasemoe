@@ -13,12 +13,12 @@ class FollowsController extends Controller
         $user = Auth::user();
         $following_user = $user->follows()->get(); // follows()メソッドでフォローしているユーザーを取得
         $following_users_posts = auth()->user()->follows()->pluck('followed_id');
-        //dd($following_users_posts);
         $posts = Post::whereIn('user_id', $following_users_posts)
                 ->orderBy('updated_at', 'desc')
                 ->get();
-        //dd($posts);
-        return view('follows.followList', compact('user','following_user','posts'));
+        $following_count = Follow::where('following_id', $user->id)->count();
+        $followed_count = Follow::where('followed_id', $user->id)->count();
+        return view('follows.followList', compact('user','following_user','posts','following_count','followed_count'));
 
         // return view('follows.followList', compact('posts'));
 
@@ -32,7 +32,9 @@ class FollowsController extends Controller
         $posts = Post::whereIn('user_id',$followed_users_posts)
                 ->orderBy('updated_at', 'desc')
                 ->get();
-        return view('follows.followerList', compact('user','followed_user','posts'));
+        $following_count = Follow::where('following_id', $user->id)->count();
+        $followed_count = Follow::where('followed_id', $user->id)->count();
+        return view('follows.followerList', compact('user','followed_user','posts','following_count','followed_count'));
     }
 
    public function follow(Request $request)

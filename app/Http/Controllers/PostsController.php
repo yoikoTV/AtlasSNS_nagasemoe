@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Post; //Postモデル（Postsテーブル）を使うuse宣言
 use App\User;
+use App\Follow;
 
 class PostsController extends Controller
 {
@@ -13,7 +14,9 @@ class PostsController extends Controller
     {
         $user = Auth::user();
         $posts = Post::with('user')->get();
-        return view('posts.index', compact('user','posts'));
+        $following_count = Follow::where('following_id', $user->id)->count();
+        $followed_count = Follow::where('followed_id', $user->id)->count();
+        return view('posts.index', compact('user','posts','following_count','followed_count'));
     }
 
     public function create()

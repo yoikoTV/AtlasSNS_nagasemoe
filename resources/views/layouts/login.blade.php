@@ -25,7 +25,7 @@
             <div id="header-menu-wrapper">
                 <h1><a href="/top"><img class="logo" src="{{asset('images/atlas.png')}}"></a></h1>
 
-                <p class ="menu-space">{{ $user->username }}さん<img src="{{asset('images/icon1.png')}}"></p>
+                <p class ="menu-space">{{ $user->username }}さん<img src="{{ asset('images/' .$user->images) }}" alt="icon"></p>
 
                 <button type="button" class="menu-btn menu-space">
                     <span class="inn"></span>
@@ -50,12 +50,12 @@
                 <p>{{ $user->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ $following_count }}名</p>
                 </div>
                 <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ $followed_count }}名</p>
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>

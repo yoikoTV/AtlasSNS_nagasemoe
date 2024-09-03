@@ -4,18 +4,21 @@
 <!-- 新規投稿フォーム -->
 <div class="create">
 
-  <div class="content">
-    <img class="post_icon" src="{{asset('images/icon1.png')}}">
+  <div class="container text-center">
+      <div class="row">
+        <img class="post_icon col-2" src="{{asset('images/icon1.png')}}">
 
-    <div class="form-group">
-      {!! Form::open(['url' => '/top']) !!}
-      {{ Form::input('text', 'post', null, ['required', 'class' => 'posts', 'placeholder' => '投稿内容を入力してください']) }}
-    </div>
+        <div class="form-floating mb-3 col-8">
+          {!! Form::open(['url' => '/top']) !!}
+          {{ Form::input('text', 'post', null, ['required', 'class' => 'form-control-plaintext', 'placeholder' => '投稿内容を入力してください']) }}
+        </div>
 
-    <button type="submit"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
-
-    {!! Form::close() !!}
+      </div>
   </div>
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="post_button"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
+    </div>
+    {!! Form::close() !!}
 
   @if($errors->any())
       <div class = "alert alert-danger">

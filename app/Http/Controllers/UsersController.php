@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Validation\Rule;
 use App\Post;
 use App\User;
+use App\Follow;
 
 class UsersController extends Controller
 {
@@ -14,7 +15,9 @@ class UsersController extends Controller
     {
         $user = Auth::user();
         $search_users = User::all();
-        return view('users.search', compact('user','search_users'));
+        $following_count = Follow::where('following_id', $user->id)->count();
+        $followed_count = Follow::where('followed_id', $user->id)->count();
+        return view('users.search', compact('user','search_users','following_count','followed_count'));
     }
 
     public function profile($id)
@@ -30,7 +33,9 @@ class UsersController extends Controller
     public function profileEdit(Request $request)
     {
         $user = Auth::user();
-        return view('users.profileEdit', compact('user'));
+        $following_count = Follow::where('following_id', $user->id)->count();
+        $followed_count = Follow::where('followed_id', $user->id)->count();
+        return view('users.profileEdit', compact('user','following_count','followed_count'));
     }
 
     public function profileUpdate(Request $request)
@@ -79,6 +84,8 @@ class UsersController extends Controller
         }else{
             $search_users = User::all();
         }
-        return view('users.search',compact('search_users','user'),['username'=>$search_users],);
+        $following_count = Follow::where('following_id', $user->id)->count();
+        $followed_count = Follow::where('followed_id', $user->id)->count();
+        return view('users.search',compact('search_users','user','following_count','followed_count'),['username'=>$search_users],);
     }
 }
