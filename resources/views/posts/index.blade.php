@@ -16,7 +16,7 @@
       </div>
   </div>
     <div class="d-flex justify-content-end">
-      <button type="submit" class="post_button"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
+      <button type="submit" class="post_button post_button_margin"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
     </div>
     {!! Form::close() !!}
 
@@ -33,8 +33,8 @@
 </div>
 
 
-<div class="content post_content">
     @foreach ($posts as $post)
+    <div class="post_content">
       <div class="read row">
         <img class="post_icon" src="{{ asset('images/' .$post->user->images) }}" alt="icon"><br>
         <p>{{$post->user->username}}</p><br>
@@ -43,16 +43,19 @@
       </div>
 
     @if ($post->user_id == Auth::id())
-      <div class = "update">
-          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">編集</a>
+    <div class="d-flex justify-content-end">
+      <div class = "update post_button">
+          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
+            <img class="post_icon" src="{{asset('images/edit.png')}}" alt="edit_image"></a>
       </div>
-
-      <div class="delete">
-        <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+      <div class="delete post_button">
+        <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+        <img class="post_icon" src="{{asset('images/trash-h.png')}}" alt="post_image"></a>
       </div>
+    </div>
     @endif
+    </div>
   @endforeach
-</div>
 
 <div class = "update">
   <div class="modal js-modal">
