@@ -4,11 +4,11 @@
 <!-- 新規投稿フォーム -->
 <div class="create">
 
-  <div class="container text-center">
+  <div class="container post_form">
       <div class="row">
-        <img class="post_icon col-2" src="{{asset('images/icon1.png')}}">
+        <img class="post_icon" src="{{asset('images/icon1.png')}}">
 
-        <div class="form-floating mb-3 col-8">
+        <div class="form-floating">
           {!! Form::open(['url' => '/top']) !!}
           {{ Form::input('text', 'post', null, ['required', 'class' => 'form-control-plaintext', 'placeholder' => '投稿内容を入力してください']) }}
         </div>
@@ -33,14 +33,14 @@
 </div>
 
 
-<div class="content">
-  @foreach ($posts as $post)
-    <div class="read">
-      <img src="{{ asset('images/' .$post->user->images) }}" alt="icon">
-      <p>{{$post->user->username}}</p>
-      <p>{{$post->post}}</p>
-      <p>{{$post->updated_at}}</p>
-    </div>
+<div class="content post_content">
+    @foreach ($posts as $post)
+      <div class="read row">
+        <img class="post_icon" src="{{ asset('images/' .$post->user->images) }}" alt="icon"><br>
+        <p>{{$post->user->username}}</p><br>
+        <p>{{$post->updated_at}}</p><br>
+        <p>{{$post->post}}</p>
+      </div>
 
     @if ($post->user_id == Auth::id())
       <div class = "update">

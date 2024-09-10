@@ -217,21 +217,44 @@ body {}
 }
 
 /* トップページ（投稿ページ） */
+.create {
+    border-bottom: 5px solid #DBDBDB;
+}
+
+.row {
+    justify-content: center;
+}
+
+.post_form {
+    padding: 50px;
+}
+
 .post_button {
     border: 0px;
     width: 40px;
     height: 40px;
     padding: 0;
+    margin-right: 15%;
+    margin-bottom: 20px;
 }
 
 .post_button img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .post_icon {
     width: 40px;
     height: 100%;
+}
+
+.form-floating {
+    width: 80%;
+    margin-left: 10px;
+}
+
+.post_content {
+    border-bottom: 2px solid #DBDBDB;
 }
