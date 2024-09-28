@@ -37,23 +37,25 @@
     <div class="post_content">
       <div class="read row">
         <img class="post_icon" src="{{ asset('images/' .$post->user->images) }}" alt="icon"><br>
-        <p>{{$post->user->username}}</p><br>
-        <p>{{$post->updated_at}}</p><br>
-        <p>{{$post->post}}</p>
+        <div>
+          <p>{{$post->user->username}}</p>
+          <p>{{$post->post}}</p>
+        </div>
+        <p class="text-end">{{$post->updated_at}}</p>
       </div>
 
-    @if ($post->user_id == Auth::id())
-    <div class="d-flex justify-content-end">
-      <div class = "update post_button">
-          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
-            <img class="post_icon" src="{{asset('images/edit.png')}}" alt="edit_image"></a>
+      @if ($post->user_id == Auth::id())
+      <div class="d-flex justify-content-end">
+        <div class = "update post_button">
+            <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
+              <img class="post_icon" src="{{asset('images/edit.png')}}" alt="edit_image"></a>
+        </div>
+        <div class="delete post_button">
+          <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+          <img class="post_icon" src="{{asset('images/trash-h.png')}}" alt="post_image"></a>
+        </div>
       </div>
-      <div class="delete post_button">
-        <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
-        <img class="post_icon" src="{{asset('images/trash-h.png')}}" alt="post_image"></a>
-      </div>
-    </div>
-    @endif
+      @endif
     </div>
   @endforeach
 
