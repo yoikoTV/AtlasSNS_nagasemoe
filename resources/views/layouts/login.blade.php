@@ -25,13 +25,13 @@
             <div id="header-menu-wrapper">
                 <h1><a href="/top"><img class="logo" src="{{asset('images/atlas.png')}}"></a></h1>
 
-                <p class ="menu-space">{{ $user->username }}さん<img src="{{ asset('images/' .$user->images) }}" alt="icon"></p>
+                    <p class ="menu-space">{{ $user->username }}さん</p>
+                    <button type="button" class="menu-btn menu-space">
+                        <span class="inn"></span>
+                    </button>
+                    <p class ="menu-space"><img src="{{ asset('images/' .$user->images) }}" alt="icon"></p>
 
-                <button type="button" class="menu-btn menu-space">
-                    <span class="inn"></span>
-                </button>
-
-                 <nav class="menu">
+                <nav class="menu">
                     <ul>
                          <li><a href="/top">ホーム</a></li>
                          <li><a href="/myprofile">プロフィール</a></li>
@@ -48,18 +48,24 @@
         <div id="side-bar">
             <div id="confirm">
                 <p>{{ $user->username }}さんの</p>
-                <div>
-                <p>フォロー数</p>
-                <p>{{ $following_count }}名</p>
+                <div class="d-flex">
+                    <p>フォロー数</p>
+                    <p class="count_margin_following">{{ $following_count }}名</p>
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数</p>
-                <p>{{ $followed_count }}名</p>
+                <div class="d-flex justify-content-end">
+                    <p class="btn custom-btn btn-design"><a href="/follow-list">フォローリスト</a></p>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+                <div class="d-flex">
+                    <p>フォロワー数</p>
+                    <p class="count_margin_followed">{{ $followed_count }}名</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <p class="btn custom-btn btn-design"><a href="/follower-list">フォロワーリスト</a></p>
+                </div>
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+            <div class="d-flex justify-content-center search_btn">
+                <p class="btn custom-btn btn-design"><a href="/search">ユーザー検索</a></p>
+            </div>
         </div>
     </div>
     <footer>

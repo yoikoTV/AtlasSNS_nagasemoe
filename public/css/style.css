@@ -39,12 +39,12 @@ body {}
 }
 
 #header-menu-wrapper p img {
-    height: 30px;
+    height: 40px;
     padding-left: 10px;
 }
 
 .logo {
-    height: 20px;
+    height: 34px;
 }
 
 /* アコーディオンメニュー */
@@ -163,7 +163,7 @@ body {}
 .login_background {
     height: 100vh;
     background-color: #1176d3;
-    background-image: linear-gradient(0deg, #fce231 0%, #1176d3 100%);
+    background-image: linear-gradient(0deg, #fce231 0%, #50abfe 50%, #1176d3 100%);
 }
 
 #header-top-wrapper {
@@ -216,13 +216,19 @@ body {}
     width: 120px;
 }
 
-/* トップページ（投稿ページ） */
-.create {
+.top_contents {
     border-bottom: 5px solid #DBDBDB;
     padding-top: 30px;
     padding-left: 5%;
 }
 
+.middle_content {
+    border-bottom: 2px solid #DBDBDB;
+    padding-top: 16px;
+    padding-left: 12%;
+}
+
+/* トップページ（投稿ページ） */
 .post_button {
     border: 0px;
     width: 40px;
@@ -243,6 +249,10 @@ body {}
     border-radius: 4px;
 }
 
+.icon-wrapper {
+    margin-right: 10px;
+}
+
 .post_icon {
     width: 40px;
     height: 100%;
@@ -254,7 +264,46 @@ body {}
     margin-left: 10px;
 }
 
-.post_content {
+.posts_name {
+    flex-grow: 0.95;
+}
+
+.post_updated_time {
+    font-size: 12px;
+}
+
+.custom-btn {
+    background-color: #0166c5;
+}
+
+.btn-design {
+    width: 120px;
+}
+
+.btn-design a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-design a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+#confirm {
+    padding: 20px;
     border-bottom: 2px solid #DBDBDB;
-    padding-left: 12%;
+}
+
+.count_margin_following {
+    margin-left: 46px;
+}
+
+.count_margin_followed {
+    margin-left: 30px;
+}
+
+.search_btn {
+    margin-top: 20px;
 }
