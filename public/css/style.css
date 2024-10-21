@@ -11,6 +11,10 @@ body {}
     text-align: center;
 }
 
+.p_margin {
+    margin: 0;
+}
+
 /* header */
 
 #header-menu-wrapper {
@@ -242,7 +246,8 @@ body {}
     margin-right: 15%;
 }
 
-.post_button img {
+.post_button img,
+.search_button img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -306,4 +311,45 @@ body {}
 
 .search_btn {
     margin-top: 20px;
+}
+
+/* フォロー・フォロワーリスト */
+.follow_p {
+    font-size: 20px;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.post_icon_follow {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* ユーザー検索 */
+.search_wrapper {
+    padding: 34px 20% 0;
+}
+
+.search_form {
+    height: 40px;
+}
+
+.follow-btn p {
+    font-size: 12px;
+    margin: 0;
+}
+
+.search_button {
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+
+.profile_label {
+    margin-right: 80px;
+}
+
+.form_size {
+    width: 300px;
 }

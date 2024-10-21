@@ -5,61 +5,59 @@
 <div class="top_contents">
 
   <div class="container post_form">
-      <div class="row">
-        <img class="post_icon" src="{{asset('images/icon1.png')}}">
-
-        <div class="form-floating">
-          {!! Form::open(['url' => '/top']) !!}
-          {{ Form::input('text', 'post', null, ['required', 'class' => 'form-control-plaintext', 'placeholder' => '投稿内容を入力してください']) }}
-        </div>
-
+    <div class="row">
+      <img class="post_icon" src="{{asset('images/icon1.png')}}">
+      <div class="form-floating">
+        {!! Form::open(['url' => '/top']) !!}
+        {{ Form::input('text', 'post', null, ['required', 'class' => 'form-control-plaintext', 'placeholder' => '投稿内容を入力してください']) }}
       </div>
-  </div>
-    <div class="d-flex justify-content-end">
-      <button type="submit" class="post_button post_button_margin"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
     </div>
-    {!! Form::close() !!}
+  </div>
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="post_button post_button_margin"><img src="{{asset('images/post.png')}}" alt="post_image"></button>
+  </div>
+  {!! Form::close() !!}
 
   @if($errors->any())
-      <div class = "alert alert-danger">
-        <ul>
-          @foreach($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
+  <div class="alert alert-danger">
+    <ul>
+      @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
   @endif
 
 </div>
 
-<div>
-  @foreach ($posts as $post)
-    <div class="middle_content">
-      <div class="read row">
-        <img class="post_icon" src="{{ asset('images/' .$post->user->images) }}" alt="icon"><br>
-        <div class="posts_name">
-          <p>{{$post->user->username}}</p>
-          <p>{{$post->post}}</p>
-        </div>
-      <p class="post_updated_time text-end">{{$post->updated_at->format('Y-m-d H:i')}}</p>
+@foreach ($posts as $post)
+<div class="middle_content">
+  <div class="read row">
+    <img class="post_icon" src="{{ asset('images/' .$post->user->images) }}" alt="icon"><br>
+    <div class="posts_name">
+      <p>{{$post->user->username}}</p>
+      <p>{{$post->post}}</p>
     </div>
+    <p class="post_updated_time text-end">{{$post->updated_at->format('Y-m-d H:i')}}</p>
+  </div>
 
-    @if ($post->user_id == Auth::id())
-    <div class="icon-wrapper d-flex justify-content-end">
-      <div class = "update post_button">
-          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
-            <img class="post_icon" src="{{asset('images/edit.png')}}" alt="edit_image"></a>
-      </div>
-      <div class="delete post_button">
-        <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
-        <img class="post_icon" src="{{asset('images/trash-h.png')}}" alt="post_image"></a>
-      </div>
+  @if ($post->user_id == Auth::id())
+  <div class="icon-wrapper d-flex justify-content-end">
+    <div class="update post_button">
+      <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
+        <img class="post_icon" src="{{asset('images/edit.png')}}" alt="edit_image"></a>
     </div>
+    <div class="delete post_button">
+      <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+        <img class="post_icon" src="{{asset('images/trash-h.png')}}" alt="post_image">
+      </a>
+    </div>
+  </div>
   @endif
 </div>
 @endforeach
 
-<div class = "update">
+<div class="update">
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">

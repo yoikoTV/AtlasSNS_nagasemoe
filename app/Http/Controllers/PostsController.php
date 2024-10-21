@@ -16,14 +16,14 @@ class PostsController extends Controller
         $posts = Post::with('user')->get();
         $following_count = Follow::where('following_id', $user->id)->count();
         $followed_count = Follow::where('followed_id', $user->id)->count();
-        return view('posts.index', compact('user','posts','following_count','followed_count'));
+        return view('posts.index', compact('user', 'posts', 'following_count', 'followed_count'));
     }
 
     public function create()
     {
         $user = Auth::user();
         $posts = Post::with('user')->get();
-        return view('posts.index', compact('user','posts'));
+        return view('posts.index', compact('user', 'posts'));
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class PostsController extends Controller
         //dd($user_id);
         $posts = $request->input('post');
         //dd($posts);
-        $request -> validate([
+        $request->validate([
             'post' => 'required|max:150'
         ]);
         Post::create([
@@ -51,7 +51,7 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
-        $request -> validate([
+        $request->validate([
             'up_post' => 'required|max:150'
             //name属性のこと
         ]);
@@ -59,7 +59,7 @@ class PostsController extends Controller
         $up_post = $request->input('up_post'); //name属性のこと
         //dd($up_post);
         Post::where('id', $id)->update([
-               'post' => $up_post
+            'post' => $up_post
         ]);
         return redirect('/top');
     }
