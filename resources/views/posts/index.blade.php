@@ -6,7 +6,7 @@
 
   <div class="container post_form">
     <div class="row">
-      <img class="post_icon" src="{{asset('images/icon1.png')}}">
+      <img class="post_icon" src="{{ asset('images/' .$user->images) }}" alt="icon">
       <div class="form-floating">
         {!! Form::open(['url' => '/top']) !!}
         {{ Form::input('text', 'post', null, ['required', 'class' => 'form-control-plaintext', 'placeholder' => '投稿内容を入力してください']) }}

@@ -353,3 +353,28 @@ body {}
 .form_size {
     width: 300px;
 }
+
+.profile_form {
+    margin-top: 60px;
+}
+
+.profile_form_margin {
+    margin-bottom: 30px;
+}
+
+.profile_form_icon {
+    margin-right: 30px;
+}
+
+.file_button {
+    display: none;
+}
+
+.file_button::file-selector-button {
+    padding: 30px 10pxs;
+}
+
+.profile_form_input {
+    background: #efefef;
+    border: #b8b8b8 solid;
+}
