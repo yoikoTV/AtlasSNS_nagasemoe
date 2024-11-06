@@ -337,6 +337,11 @@ body {}
 .follow-btn p {
     font-size: 12px;
     margin: 0;
+    color: #fff;
+}
+
+.follow-btn-color {
+    background-color: #53acff;
 }
 
 .search_button {
@@ -345,6 +350,8 @@ body {}
     height: 40px;
     padding: 0;
 }
+
+/* プロフィール */
 
 .profile_label {
     margin-right: 80px;
@@ -367,11 +374,11 @@ body {}
 }
 
 .file_button {
-    display: none;
+    padding: 30px 10px;
 }
 
-.file_button::file-selector-button {
-    padding: 30px 10pxs;
+.file_button input {
+    margin: 0 auto;
 }
 
 .profile_form_input {

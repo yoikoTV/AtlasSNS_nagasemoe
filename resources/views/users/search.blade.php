@@ -34,7 +34,7 @@
         <form action="{{ route('follow') }}" method="POST">
           @csrf
           <input type="hidden" name="followed_id" value="{{ $search_user->id }}">
-          <button type="submit" class="btn btn-primary follow-btn btn-design">
+          <button type="submit" class="btn follow-btn-color follow-btn btn-design">
             <p>フォローする</p>
           </button>
         </form>
