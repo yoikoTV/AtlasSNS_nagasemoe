@@ -3,9 +3,11 @@
 @section('content')
 <div class="top_contents d-flex align-items-center pb-4">
   <p class="follow_p">フォローリスト</p>
-  @foreach($following_user as $following_users)
-  <a href="/profile/{{$following_users->id}}"><img class="post_icon_follow" src="{{ asset('images/' .$following_users->images) }}" alt="icon"></a>
-  @endforeach
+  <div class="icon_wrapper">
+    @foreach($following_user as $following_users)
+    <a href="/profile/{{$following_users->id}}"><img class="post_icon_follow" src="{{ asset('images/' .$following_users->images) }}" alt="icon"></a>
+    @endforeach
+  </div>
 </div>
 
 @foreach($posts as $post)

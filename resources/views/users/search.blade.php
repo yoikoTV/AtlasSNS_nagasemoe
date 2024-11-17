@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="content top_contents d-flex justify-content-start pb-4">
-  <form action="/search_user">
+  <form class="d-flex" action="/search_user">
     @csrf
     <input type="text" name="keyword" class="search_form" placeholder="ユーザー名">
     <button type="submit" class="search_button"><img src="{{asset('images/search.png')}}" alt="post_image"></button>

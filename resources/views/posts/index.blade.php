@@ -33,7 +33,7 @@
 @foreach ($posts as $post)
 <div class="middle_content">
   <div class="read row">
-    <img class="post_icon" src="{{ asset('images/' .$post->user->images) }}" alt="icon"><br>
+    <img class="post_icon" src="{{ asset('images/' .$post->user->images) }}" alt="icon">
     <div class="posts_name">
       <p>{{$post->user->username}}</p>
       <p>{{$post->post}}</p>
@@ -49,7 +49,7 @@
     </div>
     <div class="delete post_button">
       <a class="delete_btn" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
-        <img class="post_icon" src="{{asset('images/trash-h.png')}}" alt="post_image">
+        <div class="post_icon trash_icon"></div>
       </a>
     </div>
   </div>
@@ -63,13 +63,13 @@
     <div class="modal__content">
 
       <form action="/post/update" method="post">
-        <textarea name="up_post" class="modal_post"></textarea>
+        <textarea name="up_post" class="modal_post textarea"></textarea>
         <input type="hidden" name="up_post_id" class="modal_id" value="">
-        <input type="submit" value="更新">
+        <div class="edit_button d-flex justify-content-center">
+          <button type="submit" class="post_button post_button_margin"><img class="post_icon" src="{{asset('images/edit.png')}}" alt="edit_image"></button>
+        </div>
         {{ csrf_field() }}
       </form>
-
-      <a class="js-modal-close" href="">閉じる</a>
     </div>
   </div>
 </div>

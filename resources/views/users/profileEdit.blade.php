@@ -21,7 +21,10 @@
       <div class="profile_form_margin">{{ Form::password('password',['class' => 'input form_size profile_form_input']) }}</div>
       <div class="profile_form_margin">{{ Form::password('password_confirmation',['class' => 'input form_size profile_form_input']) }}</div>
       <div class="profile_form_margin">{{ Form::text('bio',$user->bio,['class' => 'input form_size profile_form_input']) }}</div>
-      <div class="profile_form_margin profile_form_input file_button">{{ Form::file('images',$user->icons,['class' => 'input form_size']) }}</div>
+      <div class="profile_form_margin profile_form_input file_button d-flex justify-content-center">
+        <label for="upload" id="fileSelect" class="custom-upload">ファイルを選択</label>
+        {{ Form::file('images', ['class' => 'input form_size', 'id' => 'fileElem']) }}
+      </div>
     </div>
   </div>
   <div class="d-flex justify-content-center">

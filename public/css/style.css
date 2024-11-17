@@ -120,6 +120,12 @@ body {}
     opacity: 1;
     transform: translateY(0);
     pointer-events: all;
+    top: 75px;
+    right: 0;
+}
+
+.menu.is-open ul {
+    margin-bottom: 0px;
 }
 
 /* main content */
@@ -144,6 +150,7 @@ body {}
     height: 100vh;
     position: fixed;
     top: 0;
+    right: 0;
     width: 100%;
 }
 
@@ -232,6 +239,25 @@ body {}
     padding-left: 12%;
 }
 
+.added_p_bold {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.added_p {
+    margin-bottom: 0px;
+}
+
+.added_p_wrapper {
+    margin-bottom: 30px;
+}
+
+.login_back {
+    width: 160px;
+    margin: 0 auto;
+}
+
+
 /* トップページ（投稿ページ） */
 .post_button {
     border: 0px;
@@ -252,6 +278,7 @@ body {}
     width: 100%;
     object-fit: cover;
     border-radius: 4px;
+    background-color: #fff;
 }
 
 .icon-wrapper {
@@ -275,6 +302,29 @@ body {}
 
 .post_updated_time {
     font-size: 12px;
+}
+
+.modal_post {
+    width: 100%;
+    height: 100px;
+}
+
+.trash_icon {
+    background-image: url(../images/trash.png);
+    background-size: contain;
+    transition: all 0.3s ease;
+}
+
+.trash_icon:hover {
+    background-image: url(../images/trash-h.png);
+}
+
+.edit_button button {
+    margin: 0;
+}
+
+.textarea {
+    resize: none;
 }
 
 .custom-btn {
@@ -332,6 +382,11 @@ body {}
 
 .search_form {
     height: 40px;
+    margin-right: 10px;
+}
+
+.icon_wrapper {
+    width: 600px;
 }
 
 .follow-btn p {
@@ -377,11 +432,30 @@ body {}
     padding: 30px 10px;
 }
 
-.file_button input {
-    margin: 0 auto;
+.file_button input::file-selector-button {
+    border: none;
 }
 
 .profile_form_input {
     background: #efefef;
     border: #b8b8b8 solid;
+}
+
+.custom-upload {
+    color: #b7b7b7;
+    background-color: #fff;
+    padding: 4px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
+input[type="file"] {
+
+    display: none;
+
 }
